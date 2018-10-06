@@ -40,16 +40,23 @@ const (
 	AccountPasswordExpired          = 102117
 	AccountTwoFactorAuthMissing     = 102118
 	AccountTwoFactorAuthIsEmpty     = 102119
+	AccountJsonMarshalError         = 102120
 	AccountRequestLimit             = 102201
 	AccountInvalidToken             = 102202
 	AccountTooMuchBoardingDevice    = 102203
 	AccountInvalidTwoFactorAuthType = 102204
+	AccountBindNoDevice             = 102205
+	AccountBindNoApp                = 102206
 	AccountGenerateIdFailed         = 102301
 	AccountDBError                  = 102302
 	AccountRedisError               = 102303
 	AccountMySQLError               = 102304
 	AccountInternalError            = 102401
 	AccountAPIResponseIllegal       = 102402
+	AccountBindNoAuthinfo           = 102403
+	AccountServiceToken             = 102404
+	AccountBindEmptyPersonalTokenName = 102405
+	SmsServiceErr                   = 102406
 )
 
 // ErrorMap 错误码与错误信息map
@@ -198,6 +205,10 @@ var ErrorMap = map[int]map[string]string{
 		"EN-US": "Account Two Factor Auth IsEmpty",
 		"ZH-CN": "账号没有设置二步验证方式",
 	},
+	102120: map[string]string{
+		"EN-US": "Account Json Marshal",
+		"ZH-CN": "账号Json序列化",
+	},
 	102201: map[string]string{
 		"EN-US": "Account Request Limit",
 		"ZH-CN": "达到最大发送限制，请稍后重试",
@@ -213,6 +224,14 @@ var ErrorMap = map[int]map[string]string{
 	102204: map[string]string{
 		"EN-US": "Account Invalid Two Factor Auth Type",
 		"ZH-CN": "无效二次验证类型",
+	},
+	102205: map[string]string{
+		"EN-US": "Account Bind No Device",
+		"ZH-CN": "无效终端设备代码",
+	},
+	102206: map[string]string{
+		"EN-US": "Account Bind No App",
+		"ZH-CN": "无效应用代码",
 	},
 	102301: map[string]string{
 		"EN-US": "Account Generate Id Failed",
@@ -237,6 +256,22 @@ var ErrorMap = map[int]map[string]string{
 	102402: map[string]string{
 		"EN-US": "Account API Response Illegal",
 		"ZH-CN": "接口返回值不合法",
+	},
+	102403: map[string]string{
+		"EN-US": "Account No Bind Auth Info",
+		"ZH-CN": "未包涵AUTHINFO",
+	},
+	102404: map[string]string{
+		"EN-US": "Account Service Token",
+		"ZH-CN": "调用token服务失败",
+	},
+	102405: map[string]string{
+		"EN-US": "Account Personal Token Name Empty",
+		"ZH-CN": "personal token 名字为空",
+	},
+	102406: map[string]string{
+		"EN-US": "Sms Service Err",
+		"ZH-CN": "短信服务 错误",
 	},
 }
 

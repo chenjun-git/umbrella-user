@@ -1,6 +1,7 @@
 package v1_0
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -12,9 +13,9 @@ import (
 func GetCaptchaValue(token string) string {
 	bs := captcha.Store.Get(token, false)
 	for i, _ := range bs {
-		bs[i] += 48 // TODO: 为什么+48
+		bs[i] += 48
 	}
-
+	fmt.Printf("bs:%s, len:%d\n", bs, len(bs))
 	return string(bs)
 }
 

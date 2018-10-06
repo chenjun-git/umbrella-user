@@ -1,7 +1,8 @@
-package: user
+package: .
 import: 
 - package: github.com/go-sql-driver/mysql
 - package: github.com/golang/protobuf
+  version: a47340a8e42c4ceb44c00c2a05199e24b24fcaef
 - package: github.com/go-chi/chi
 - package: github.com/BurntSushi/toml
 - package: github.com/json-iterator/go
@@ -16,3 +17,4 @@ import:
 - package: github.com/json-iterator/go
 - package: github.com/modern-go/concurrent
 - package: github.com/chenjun-git/umbrella-common
+  version: adb38e0b9e479c047e8d5abe40768ca7757f0d6a

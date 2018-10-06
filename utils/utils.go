@@ -1,11 +1,13 @@
 package utils
 
 import (
+	"context"
 	"database/sql"
 	"io"
 	"io/ioutil"
 	"math/rand"
 	"net/http"
+
 
 	"github.com/json-iterator/go"
 )
@@ -51,4 +53,37 @@ func BindJSON(r *http.Request, obj interface{}) error {
 	}
 
 	return nil//structValidator.ValidateStruct(obj)
+}
+
+////////////////////////////////////////////////////////////////////////
+type contextKeyType string
+
+const (
+	currentAccessToken contextKeyType = "current_access_token"
+	currentUserID      contextKeyType = "current_user_id"
+)
+
+// SetCurrentUserAuth 设置context中的tenant鉴权信息
+func SetCurrentUserAuth(ctx context.Context, accessToken, userID string) context.Context {
+	ctx = context.WithValue(ctx, currentAccessToken, accessToken)
+	ctx = context.WithValue(ctx, currentUserID, userID)
+	return ctx
+}
+
+// GetCurrentUserAuth 获取context中的tenant鉴权信息
+func GetCurrentUserAuth(ctx context.Context) (userID, accessToken string) {
+	userID = ""
+	accessToken = ""
+
+	userID, ok := ctx.Value(currentUserID).(string)
+	if !ok || userID == "" {
+		return
+	}
+
+	accessToken, ok = ctx.Value(currentAccessToken).(string)
+	if !ok || accessToken == "" {
+		return
+	}
+
+	return
 }

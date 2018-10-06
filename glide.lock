@@ -1,5 +1,5 @@
-hash: c40f5d0252132696ba7e45dea59971b85064e447df881649177f3c56bb295fb8
-updated: 2018-10-05T23:35:00.633339229+08:00
+hash: c9642c0fda0190a9226c506f547dccd41030d21bed10f85afe78b692006767b9
+updated: 2018-10-06T22:21:53.063848402+08:00
 imports:
 - name: github.com/ahmetb/go-linq
   version: 67424dce7b47e42b7f2373557878fd6e3f2d8c44
@@ -12,14 +12,17 @@ imports:
 - name: github.com/BurntSushi/toml
   version: 3012a1dbe2e4bd1391d42b32f0577cb7bbc7f005
 - name: github.com/chenjun-git/umbrella-common
-  version: 1f4682091ee32bae49124bc3c810cd808b5b8019
+  version: adb38e0b9e479c047e8d5abe40768ca7757f0d6a
   subpackages:
   - caller
   - database/sql
   - json
   - monitor
+  - proto
   - redis
   - redis/pool
+  - token
+  - utils
 - name: github.com/dchest/captcha
   version: 6a29415a8364ec2971fdc62d9e415ed53fc20410
 - name: github.com/fzzy/radix
@@ -74,6 +77,8 @@ imports:
   version: a6e9df898b1336106c743392c48ee0b71f5c4efa
   subpackages:
   - xfs
+- name: github.com/satori/go.uuid
+  version: 36e9d2ebbde5e3f13ab2e25625fd453271d6522e
 - name: github.com/stretchr/testify
   version: f35b8ab0b5a2cef36673838d662e249dd9c94686
   subpackages:

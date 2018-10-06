@@ -4,7 +4,9 @@ const (
 	CurrentAccount              = "current_user"
 	AuthHeader                  = "Authorization"
 	AccessTokenKey              = "x-token"
+	Verify2faTokenKey           = "2fa-token"
 	ModuleName                  = "user"
+	TwoFactorAuthVerifyTokenKey = "verify_2fa_token"
 )
 
 const (
@@ -13,6 +15,8 @@ const (
 	UpdatePhonePurpose             = "update_phone"
 	UpdateEmailPurpose             = "update_email"
 	ResetPasswordPurpose           = "reset_password"
+	TwoFactorAuthSetupPurpose      = "setup_2fa_code"
+	TwoFactorAuthVerifyCodePurpose = "verify_2fa_code"
 )
 
 const (
@@ -24,6 +28,8 @@ const (
 const (
 	WebSource = "web"
 	AppSource = "app"
+
+	InternalSource = "internal"
 )
 
 var SourceRange []string
@@ -32,6 +38,6 @@ var TwoFactorAuthTypes []string
 
 func init() {
 	SourceRange = []string{WebSource, AppSource}
-	PurposeRange = []string{SignupPurpose, SigninPurpose, UpdatePhonePurpose, UpdateEmailPurpose, ResetPasswordPurpose}
+	PurposeRange = []string{SignupPurpose, SigninPurpose, UpdatePhonePurpose, UpdateEmailPurpose, ResetPasswordPurpose, TwoFactorAuthSetupPurpose, TwoFactorAuthVerifyCodePurpose}
 	TwoFactorAuthTypes = []string{MediaTypePhone, MediaTypeEmail, MediaTypeTOTP}
 }

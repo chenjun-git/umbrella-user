@@ -8,18 +8,33 @@ import (
 
 // Configs 全局配置信息
 type Configs struct {
-	Listen  string
-	Monitor *monitorConfig
-	Captcha *CaptchaConfig
-	Login   *LoginConfig
-	Mysql   *MysqlConfig
-	Redis   *RedisConfig
-	HTTP    *httpConfig
+	Listen      string
+	ReleaseMode bool
+	Sms         *smsConfig
+	Monitor     *monitorConfig
+	Verify      *VerifyConfig
+	Captcha     *CaptchaConfig
+	Login       *LoginConfig
+	Mysql       *MysqlConfig
+	Redis       *RedisConfig
+	HTTP        *httpConfig
+	Token       *tokenConfig
+}
+
+type smsConfig struct {
+	Addr string
 }
 
 type monitorConfig struct {
 	Namespace string
 	Subsystem string
+}
+
+type VerifyConfig struct {
+	DefaultLength int      // 短信验证码长度，默认为6位
+	MaxSendTimes  int      // 周期内最大发送次数，默认为5次
+	MaxCheckTimes int      // 周期内最大检验次数，默认为5次
+	TTL           Duration // 检测周期，默认为10分钟
 }
 
 type CaptchaConfig struct {
@@ -55,6 +70,16 @@ type RedisConfig struct {
 
 type httpConfig struct {
 	Listen string
+}
+
+type tokenConfig struct {
+	TokenLibVersion 	  int
+	AccessTokenTTL        Duration
+	RefreshTokenTTL       Duration
+	AccessTokenExpireSoon Duration // 过期前多长时间算expire soon
+
+	PrivateKeyPath string
+	PublicKeyPath  string
 }
 
 // Config 全局配置信息

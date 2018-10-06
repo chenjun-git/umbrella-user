@@ -1,0 +1,87 @@
+syntax = "proto3";
+package pb;
+
+// Token check status
+enum VerifyResult {
+    _ = 0;
+    Allow = 1;
+    Deny = 2;
+    ExpireSoon = 3;
+    Expired = 4;
+}
+
+message Contact {
+    string name = 1;
+    string phone = 2;
+    string email = 3;
+}
+
+//地址
+message Address {
+    string street = 1;
+    string city = 2;
+    string state = 3;
+    string post_code = 4;
+    string country = 5;
+    string country_code = 6;
+}
+
+message VerifyTokenReq {
+    string access_token = 1;
+}
+
+message VerifyTokenResp {
+    VerifyResult Result = 1;
+    string user_id = 2;
+    string device = 4;
+    string app = 5;
+    string message = 6;
+}
+
+message RefreshTokenReq {
+    string refresh_token = 1;
+}
+
+message RefreshTokenResp {
+    string access_token = 1;
+    string refresh_token = 2;
+}
+
+message CreatePersonalTokenReq {
+    string name = 1;
+}
+
+message CreatePersonalTokenResp {
+    string personal_token = 1;
+}
+
+message DeletePersonalTokenReq {
+    string name = 1;
+}
+
+message DeletePersonalTokenResp {
+}
+
+message Empty {
+}
+
+service Token {
+	//验证 token
+    rpc VerifyToken (VerifyTokenReq) returns (VerifyTokenResp) {
+    }
+    //刷新token
+    rpc RefreshToken (RefreshTokenReq) returns (RefreshTokenResp) {
+    }
+    //删除 所有 token
+    //rpc RemoveAllToken (RemoveAllTokenReq) returns (RemoveAllTokenResp) {
+    //}
+    // 生成PersonalToken
+    rpc CreatePersonalToken (CreatePersonalTokenReq) returns (CreatePersonalTokenResp) {
+    }
+    // 删除PersonalToken
+    rpc DeletePersonalToken (DeletePersonalTokenReq) returns (DeletePersonalTokenResp) {
+    }
+    // 获取PersonalToken
+    //rpc GetPersonalTokens (GetPersonalTokensReq) returns (GetPersonalTokensResp) {
+    //}
+}

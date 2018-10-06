@@ -14,7 +14,7 @@ folder_dep:
 
 deps: folder_dep
 	mkdir -p $(CURDIR)/vendor
-	glide install
+	#glide install
 
 build: folder_dep
 	$(BUILDENVVAR) go build -o $(GOBIN)/umbrella-user -ldflags "-X main.BuildTime=`date '+%Y-%m-%d_%I:%M:%S%p'` -X main.BuildGitHash=`git rev-parse HEAD` -X main.BuildGitTag=`git describe --tags`" $(CURRENT_GIT_GROUP)/$(CURRENT_GIT_REPO)
@@ -26,6 +26,9 @@ proto:
 
 test: folder_dep
 	go test $(CURRENT_GIT_GROUP)/$(CURRENT_GIT_REPO)/db
+	go test $(CURRENT_GIT_GROUP)/$(CURRENT_GIT_REPO)/model
+	go test $(CURRENT_GIT_GROUP)/$(CURRENT_GIT_REPO)/token
+	go test $(CURRENT_GIT_GROUP)/$(CURRENT_GIT_REPO)/utils/captcha
 
 clean:
 	@rm -rf bin _project

@@ -34,15 +34,5 @@ message GetUsersReq {
 }
 
 service UserInfo {
-    rpc GetUsersById() returns (Users){
-    }
-
-    rpc AddUser() returns () {
-    }
-
-    rpc DeleteUser() returns () {
-    }
-
-    rpc UpdateUser() returns () {
-    }
+    
 }

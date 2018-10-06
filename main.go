@@ -6,10 +6,12 @@ import (
 	"net/http"
 
 	"github.com/chenjun-git/umbrella-common/monitor"
+	commonUtils "github.com/chenjun-git/umbrella-common/utils"
 
 	"business/user/common"
+	"business/user/db"
 	"business/user/handler"
-	"business/user/utils"
+	"business/user/utils/captcha"
 )
 
 var (
@@ -30,17 +32,22 @@ func initConfig() {
 	flag.Parse()
 
 	common.InitConfig(*configPath)
+
+	// init mysql and redis
+	db.InitRedis(common.Config.Redis)
+	db.InitMySQL(common.Config.Mysql)
+
+	captcha.InitCaptcha(common.Config.Captcha.TTL.D())
 }
 
 func initMonitor() {
 	monitor.Init(common.Config.Monitor.Namespace, common.Config.Monitor.Subsystem)
 	monitor.Monitor.SetVersion(monitor.Version{GitHash: BuildGitHash, GitTag: BuildGitTag, BuildTime: BuildTime})
-	monitor.InitAndListen(common.Config.HTTP.Listen)
 }
 
 func startHTTPServer() {
-	router := handler.RegisterBackendRouter()
-	utils.RegisterPProf(router)
+	router := handler.RegisterUserRouter()
+	commonUtils.RegisterPProf(router)
 	monitor.RegisterHandlers(router)
 
 	httpServer := &http.Server{
@@ -49,6 +56,7 @@ func startHTTPServer() {
 	}
 	fmt.Printf("start http server, listen: %s!\n", common.Config.HTTP.Listen)
 	if err := httpServer.ListenAndServe(); err != nil {
+		fmt.Printf("start http server failed, err : %+v\n", err)
 		panic("start http server failed")
 	}
 }

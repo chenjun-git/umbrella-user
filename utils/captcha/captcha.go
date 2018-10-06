@@ -5,8 +5,9 @@ import (
 	"bytes"
 	"fmt"
 	"time"
-
+	
 	cap "github.com/dchest/captcha"
+	"github.com/fzzy/radix/redis"
 
 	"business/user/db"
 )
@@ -24,6 +25,7 @@ const (
 func (c CaptchaStore) Set(id string, digits []byte) {
 	key := fmt.Sprintf("%s:%s", CaptcharKeyPrefix, id)
 	if err := db.RedisSet(context.Background(), key, digits, c.ttl); err != nil {
+		fmt.Printf("set captcha err, key : %s, digits : %s, err : %+v\n", key, digits, err)
 		//log.Error("CaptchaStore.Set set id failed", zap.Error(err))
 		return
 	}
@@ -33,6 +35,7 @@ func (c CaptchaStore) Get(id string, clear bool) []byte {
 	key := fmt.Sprintf("%s:%s", CaptcharKeyPrefix, id)
 	reply, err := db.RedisGet(context.Background(), key)
 	if err != nil {
+		fmt.Printf("get captcha err, err : %+v\n", err)
 		//log.Error("CaptchaStore.Get get key from redis failed", zap.Error(err))
 		return nil
 	}
@@ -42,12 +45,14 @@ func (c CaptchaStore) Get(id string, clear bool) []byte {
 
 	digits, err := reply.Bytes()
 	if err != nil {
+		fmt.Printf("get captcha err, err : %+v\n", err)
 		//log.Error("CaptchaStore.Get parse result failed", zap.Error(err))
 		return nil
 	}
 
 	if clear {
 		if err = db.RedisDel(context.Background(), key); err != nil {
+			fmt.Printf("get captcha err, err : %+v\n", err)
 			//log.Error("CaptchaStore.Get delete key failed", zap.Error(err))
 		}
 	}

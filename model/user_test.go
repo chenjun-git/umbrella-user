@@ -1,6 +1,8 @@
 package model
 
 import (
+	"fmt"
+	"io/ioutil"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -8,8 +10,9 @@ import (
 	"business/user/common"
 	"business/user/db"
 )
+
 const (
-	TestConfigFilePath = "../conf/config.dev.toml"
+	TestConfigFilePath = "../conf/config.user.toml"
 
 	TestUserSQLPath = "../sql/user.sql"
 )
@@ -33,23 +36,23 @@ func TestInitUserTable(t *testing.T) {
 	assert.NotEmpty(result)
 }
 
-func TestSqlInsert(t *testing.T) {
-	assert := assert.New(t)
+// func TestSqlInsert(t *testing.T) {
+// 	assert := assert.New(t)
 
-	rowsAffected, err := sqlInsert(db.MySQL, UserTableName)
-	assert.Nil(err)
-}
+// 	rowsAffected, err := sqlInsert(db.MySQL, UserTableName)
+// 	assert.Nil(err)
+// }
 
-func TestSqlQueryRow(t *testing.T) {
-	assert := assert.New(t)
+// func TestSqlQueryRow(t *testing.T) {
+// 	assert := assert.New(t)
 
-	rows, err := sqlQueryRow(db.MySQL, UserTableName)
-	assert.Nil(err)
-}
+// 	rows, err := sqlQueryRow(db.MySQL, UserTableName)
+// 	assert.Nil(err)
+// }
 
-func TestSqlUpdate(t *testing.T) {
-	assert := assert.New(t)
+// func TestSqlUpdate(t *testing.T) {
+// 	assert := assert.New(t)
 
-	rowsAffected, err := sqlUpdate(db.MySQL, UserTableName)
-	assert.Nil(err)
-}
+// 	rowsAffected, err := sqlUpdate(db.MySQL, UserTableName)
+// 	assert.Nil(err)
+// }

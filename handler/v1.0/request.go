@@ -1,5 +1,24 @@
 package v1_0
 
+type SendVerifyCodeRequest struct {
+	Phone        string `json:"phone" binding:"omitempty"`
+	Email        string `json:"email" binding:"omitempty"`
+	MediaType    string `json:"media_type" binding:"omitempty"`
+	Purpose      string `json:"purpose" binding:"required"`
+	Source       string `json:"source" binding:"required"`
+	CaptchaToken string `json:"captcha_token" binding:"omitempty"`
+	CaptchaValue string `json:"captcha_value" binding:"omitempty"`
+}
+
+type CheckVerifyCodeRequest struct {
+	Phone      string `json:"phone" binding:"omitempty"`
+	Email      string `json:"email" binding:"omitempty"`
+	MediaType  string `json:"media_type" binding:"omitempty"`
+	Purpose    string `json:"purpose" binding:"required"`
+	Source     string `json:"source" binding:"required"`
+	VerifyCode string `json:"verify_code" binding:"required"`
+}
+
 type SignUpRequest struct {
 	Phone       string `json:"phone" binding:"omitempty"`
 	Email       string `json:"email" binding:"omitempty"`
