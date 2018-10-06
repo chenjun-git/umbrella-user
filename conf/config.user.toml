@@ -1,0 +1,35 @@
+listen = ":7109"
+releaseMode = false
+
+[monitor]
+namespace = "umbrella"
+subsystem = "user"
+
+
+[captcha]
+defaultLength = 5
+defaultWidth = 240
+defaultHeight = 80
+ttl = "86400s"
+
+[login]
+ttl = "10m"
+maxRequestTimes = 5
+maxCaptchaTImes = 1
+cleanInvalidTokenThreshold = 1000
+maxNumberLogin = 2000
+
+[mysql]
+dsn = "root:@tcp(127.0.0.1:3306)/user?charset=utf8mb4,utf8&parseTime=True&loc=UTC"
+maxIdle = 1
+maxOpen = 2
+
+[redis]
+addr = "127.0.0.1:6379"
+password = ""
+poolSize = 5
+db = 2
+timeout = "3s"
+
+[http]
+listen = ":7108"

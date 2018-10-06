@@ -1,0 +1,48 @@
+syntax = "proto3";
+package pb;
+
+import "github.com/chenjun-git/umbrella-common/proto/common.proto";
+
+// User
+message User {
+    int user_id = 1;
+    string user_name = 2;
+    string user_passwd = 3;
+    string alias = 4;
+    string portrait = 5;
+    string tel = 6;
+    string email = 7;
+    string qq = 8;
+    bool is_member = 9;
+    string member_start_time = 10;
+    string member_duration = 11;
+    bool role = 12;
+    string reg_time = 13;
+}
+
+// Users
+message Users {
+    repeated User items = 1;
+    common.Error error = 2;
+}
+
+message GetUsersReq {
+    common.Error error = 2;
+}
+message GetUsersReq {
+    common.Error error = 2;
+}
+
+service UserInfo {
+    rpc GetUsersById() returns (Users){
+    }
+
+    rpc AddUser() returns () {
+    }
+
+    rpc DeleteUser() returns () {
+    }
+
+    rpc UpdateUser() returns () {
+    }
+}
