@@ -1,6 +1,7 @@
 package v1_0
 
 import (
+	"fmt"
 	"net/http"
 
 	linq "github.com/ahmetb/go-linq"
@@ -90,7 +91,7 @@ func genCodeAndSend(w http.ResponseWriter, r *http.Request, mediaType, phone, em
 
 func SendVerifyCodeHandler(w http.ResponseWriter, r *http.Request) {
 	var req SendVerifyCodeRequest
-
+	fmt.Printf("send")
 	if err := utils.BindJSON(r, &req); err != nil {
 		render.JSON(w, r, http.StatusBadRequest, render.M{
 			"code":    common.AccountBindFailed,

@@ -1,5 +1,5 @@
 listen = ":7109"
-releaseMode = false
+releaseMode = true
 
 [token]
 tokenLibVersion = 1
