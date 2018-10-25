@@ -8,7 +8,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	
-	"business/user/common"
+	"github.com/chenjun-git/umbrella-user/common"
 )
 
 const (

@@ -9,7 +9,7 @@ import (
 	cap "github.com/dchest/captcha"
 	"github.com/fzzy/radix/redis"
 
-	"business/user/db"
+	"github.com/chenjun-git/umbrella-user/db"
 )
 
 type CaptchaStore struct {

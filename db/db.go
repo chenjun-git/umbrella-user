@@ -3,7 +3,7 @@ package db
 import (
 	"github.com/chenjun-git/umbrella-common/database/sql"
 
-	"business/user/common"
+	"github.com/chenjun-git/umbrella-user/common"
 )
 
 // RedisCommitOrRollback ...

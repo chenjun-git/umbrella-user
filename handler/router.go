@@ -3,7 +3,7 @@ package handler
 import (
 	"github.com/go-chi/chi"
 
-	"business/user/handler/v1.0"
+	"github.com/chenjun-git/umbrella-user/handler/v1.0"
 )
 
 func RegisterUserRouter() *chi.Mux {

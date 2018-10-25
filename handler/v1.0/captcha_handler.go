@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"business/user/common"
-	"business/user/utils/captcha"
-	"business/user/utils/render"
+	"github.com/chenjun-git/umbrella-user/common"
+	"github.com/chenjun-git/umbrella-user/utils/captcha"
+	"github.com/chenjun-git/umbrella-user/utils/render"
 )
 
 func GetCaptchaValue(token string) string {

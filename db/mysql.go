@@ -8,7 +8,7 @@ import (
 
 	"github.com/chenjun-git/umbrella-common/database/sql"
 
-	"business/user/common"
+	"github.com/chenjun-git/umbrella-user/common"
 )
 
 // MySQL 全局的MySQL连接池

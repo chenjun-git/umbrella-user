@@ -6,8 +6,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"business/user/common"
-	"business/user/db"
+	"github.com/chenjun-git/umbrella-user/common"
+	"github.com/chenjun-git/umbrella-user/db"
 )
 
 var id string

@@ -3,9 +3,9 @@ package v1_0
 import (
 	"net/http"
 
-	"business/user/common"
-	"business/user/utils"
-	"business/user/utils/render"
+	"github.com/chenjun-git/umbrella-user/common"
+	"github.com/chenjun-git/umbrella-user/utils"
+	"github.com/chenjun-git/umbrella-user/utils/render"
 )
 
 func ValidPhoneEmail(w http.ResponseWriter, r *http.Request, phone string, email string, mediaType string) bool {

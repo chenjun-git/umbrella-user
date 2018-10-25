@@ -1,7 +1,7 @@
 package v1_0
 
 import (
-	"business/user/common"
+	"github.com/chenjun-git/umbrella-user/common"
 )
 
 func getContactByPhoneEmail(mediaType, phone, email string) string {

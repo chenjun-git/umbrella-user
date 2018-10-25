@@ -2,7 +2,7 @@ export GOPATH := $(CURDIR)/_project
 export GOBIN := $(CURDIR)/bin
 
 CURRENT_GIT_GROUP := business
-CURRENT_GIT_REPO := user
+CURRENT_GIT_REPO := umbrella-user
 COMMONENVVAR ?= GOOS=linux GOARCH=amd64
 BUILDENVVAR ?= cgo_enabled=0
 

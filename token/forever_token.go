@@ -4,9 +4,9 @@ import (
 	"context"
 	//"time"
 
-	"business/user/common"
-	"business/user/db"
-	"business/user/utils"
+	"github.com/chenjun-git/umbrella-user/common"
+	"github.com/chenjun-git/umbrella-user/db"
+	"github.com/chenjun-git/umbrella-user/utils"
 )
 
 const (

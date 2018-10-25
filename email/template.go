@@ -3,7 +3,7 @@ package email
 import (
 	"strings"
 
-	"business/user/common"
+	"github.com/chenjun-git/umbrella-user/common"
 )
 
 // 邮件结构内容

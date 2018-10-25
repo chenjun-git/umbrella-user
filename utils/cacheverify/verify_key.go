@@ -9,8 +9,8 @@ import (
 
 	"github.com/chenjun-git/umbrella-common/json"
 
-	"business/user/common"
-	"business/user/db"
+	"github.com/chenjun-git/umbrella-user/common"
+	"github.com/chenjun-git/umbrella-user/db"
 )
 
 type VerifyKey struct {

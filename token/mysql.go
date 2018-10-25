@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"business/user/db"
+	"github.com/chenjun-git/umbrella-user/db"
 )
 
 const (

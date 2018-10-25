@@ -6,14 +6,14 @@ import (
 
 	linq "github.com/ahmetb/go-linq"
 
-	"business/user/common"
-	"business/user/db"
-	"business/user/model"
-	"business/user/utils"
-	"business/user/utils/cacheverify"
-	"business/user/utils/captcha"
-	"business/user/utils/render"
-	"business/user/sms"
+	"github.com/chenjun-git/umbrella-user/common"
+	"github.com/chenjun-git/umbrella-user/db"
+	"github.com/chenjun-git/umbrella-user/model"
+	"github.com/chenjun-git/umbrella-user/utils"
+	"github.com/chenjun-git/umbrella-user/utils/cacheverify"
+	"github.com/chenjun-git/umbrella-user/utils/captcha"
+	"github.com/chenjun-git/umbrella-user/utils/render"
+	"github.com/chenjun-git/umbrella-user/sms"
 )
 
 func genCodeAndSend(w http.ResponseWriter, r *http.Request, mediaType, phone, email, purpose, source string) (haveRender bool) {

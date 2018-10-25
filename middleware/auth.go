@@ -7,10 +7,10 @@ import (
 	"time"
 	"github.com/chenjun-git/umbrella-common/token"
 
-	"business/user/common"
-	"business/user/db"
-	"business/user/model"
-	"business/user/utils/cacheverify"
+	"github.com/chenjun-git/umbrella-user/common"
+	"github.com/chenjun-git/umbrella-user/db"
+	"github.com/chenjun-git/umbrella-user/model"
+	"github.com/chenjun-git/umbrella-user/utils/cacheverify"
 )
 
 // func CheckAccessToken(ctx context.Context, accessToken string) (*model.User, error) {

@@ -14,16 +14,16 @@ import (
 	"github.com/chenjun-git/umbrella-common/lang"
 	"github.com/chenjun-git/umbrella-common/token"
 
-	"business/user/common"
-	"business/user/db"
-	"business/user/middleware"
-	"business/user/model"
-	innerToken "business/user/token"
-	"business/user/utils"
-	"business/user/utils/cacheverify"
-	"business/user/utils/captcha"
-	"business/user/utils/password"
-	"business/user/utils/render"
+	"github.com/chenjun-git/umbrella-user/common"
+	"github.com/chenjun-git/umbrella-user/db"
+	"github.com/chenjun-git/umbrella-user/middleware"
+	"github.com/chenjun-git/umbrella-user/model"
+	innerToken "github.com/chenjun-git/umbrella-user/token"
+	"github.com/chenjun-git/umbrella-user/utils"
+	"github.com/chenjun-git/umbrella-user/utils/cacheverify"
+	"github.com/chenjun-git/umbrella-user/utils/captcha"
+	"github.com/chenjun-git/umbrella-user/utils/password"
+	"github.com/chenjun-git/umbrella-user/utils/render"
 )
 
 func checkVerifyCode(ctx context.Context, mediaType, id, source, purpose, code string) (bool, error) {

@@ -3,7 +3,7 @@ package cacheverify
 import (
 	"time"
 	
-	"business/user/common"
+	"github.com/chenjun-git/umbrella-user/common"
 )
 
 type LoginVerify struct {

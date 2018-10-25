@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"business/user/common"
-	"business/user/db"
+	"github.com/chenjun-git/umbrella-user/common"
+	"github.com/chenjun-git/umbrella-user/db"
 	//"business/user/utils"
 )
 

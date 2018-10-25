@@ -8,10 +8,10 @@ import (
 	"github.com/chenjun-git/umbrella-common/monitor"
 	commonUtils "github.com/chenjun-git/umbrella-common/utils"
 
-	"business/user/common"
-	"business/user/db"
-	"business/user/handler"
-	"business/user/utils/captcha"
+	"github.com/chenjun-git/umbrella-user/common"
+	"github.com/chenjun-git/umbrella-user/db"
+	"github.com/chenjun-git/umbrella-user/handler"
+	"github.com/chenjun-git/umbrella-user/utils/captcha"
 )
 
 var (

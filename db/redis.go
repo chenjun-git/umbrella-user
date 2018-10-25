@@ -12,7 +12,7 @@ import (
 	"github.com/chenjun-git/umbrella-common/redis"
 	"github.com/chenjun-git/umbrella-common/redis/pool"
 
-	"business/user/common"
+	"github.com/chenjun-git/umbrella-user/common"
 )
 
 

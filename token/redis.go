@@ -8,8 +8,8 @@ import (
 
 	"github.com/json-iterator/go"
 	
-	"business/user/common"
-	"business/user/db"
+	"github.com/chenjun-git/umbrella-user/common"
+	"github.com/chenjun-git/umbrella-user/db"
 )
 
 var json = jsoniter.ConfigCompatibleWithStandardLibrary

@@ -7,10 +7,10 @@ import (
 
 	"github.com/chenjun-git/umbrella-common/token"
 
-	"business/user/common"
-	"business/user/db"
-	"business/user/utils"
-	"business/user/utils/cacheverify"
+	"github.com/chenjun-git/umbrella-user/common"
+	"github.com/chenjun-git/umbrella-user/db"
+	"github.com/chenjun-git/umbrella-user/utils"
+	"github.com/chenjun-git/umbrella-user/utils/cacheverify"
 )
 
 // VerifyTokenResult 验证token的结果的类型
