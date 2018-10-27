@@ -1,4 +1,4 @@
-package: .
+package: github.com/chenjun-git/umbrella-user
 import: 
 - package: github.com/go-sql-driver/mysql
 - package: github.com/golang/protobuf
@@ -20,3 +20,5 @@ import:
   version: adb38e0b9e479c047e8d5abe40768ca7757f0d6a
 - package: github.com/chenjun-git/umbrella-sms
   version: dc7a67417a177301cfc1e04037434bd4f5606402
+- package: github.com/chenjun-git/umbrella-email
+  subpackage: directmail

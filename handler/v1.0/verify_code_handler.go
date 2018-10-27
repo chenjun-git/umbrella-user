@@ -6,6 +6,8 @@ import (
 
 	linq "github.com/ahmetb/go-linq"
 
+	"github.com/chenjun-git/umbrella-email/directmail/smtp"
+
 	"github.com/chenjun-git/umbrella-user/common"
 	"github.com/chenjun-git/umbrella-user/db"
 	"github.com/chenjun-git/umbrella-user/model"
@@ -56,6 +58,8 @@ func genCodeAndSend(w http.ResponseWriter, r *http.Request, mediaType, phone, em
 		if common.MediaTypeEmail == mediaType {
 			// 发送邮箱校验码: 邮箱验证码在生存周期内，不管请求发送几次，都使用同一个验证码，产品需求!
 			//_, err = email.SendVerifyUrlAndCode(orgSetting.Email, purpose, orgSetting.Name, userEmail, common.MeiqiaWebSiteUrl, verify.VerifyCode)
+			//content := fmt.Sprintf(email.GetTplInfo(common.SignupPurpose, "保护伞"), verify.VerifyCode)
+			err = smtp.SendMail(verifyKey.ID, "注册验证码", fmt.Sprintf("保护伞注册验证码：％s", verify.VerifyCode))
 		} else {
 			// 发送短信校验码: 短信验证码在生存周期内，不管请求发送几次，都使用同一个验证码，产品需求!
 			err = sms.SendPhoneMsg(common.Config.Sms.Addr, verifyKey.ID, verify.VerifyCode, verifyKey.ID)

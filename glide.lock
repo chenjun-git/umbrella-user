@@ -1,5 +1,5 @@
-hash: f6a3619a46ba51c61a5513360f867a7556ef8be9dc2d012210d41f8f7e07b510
-updated: 2018-10-27T18:02:14.888651693+08:00
+hash: 1163e42035e209709801656aa67d7f20f7929e21d31cb8b378f968ad3d5fa5ae
+updated: 2018-10-27T18:27:49.221581684+08:00
 imports:
 - name: github.com/ahmetb/go-linq
   version: 9f6960b5d2e017ec4b7820f045fbd7db66dd53b6
@@ -25,6 +25,10 @@ imports:
   - redis/pool
   - token
   - utils
+- name: github.com/chenjun-git/umbrella-email
+  version: ec031b2c91e7728b86d88385391baead1ee85634
+  subpackages:
+  - directmail/smtp
 - name: github.com/chenjun-git/umbrella-sms
   version: dc7a67417a177301cfc1e04037434bd4f5606402
   subpackages:
