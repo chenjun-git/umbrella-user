@@ -723,6 +723,38 @@ func GetUserHandler(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
+func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
+	sqlExec := db.BindDBerWithContext(r.Context(), db.MySQL)
+	count, err := model.Count(sqlExec, map[string]interface{}{})
+	if err != nil {
+		render.JSON(w, r, http.StatusOK, render.M{
+			"code":    common.AccountDBError,
+			"message": err.Error(),
+		})
+		return
+	}
+
+	offset := r.URL.Query().Get("offset")
+	pageCount := r.URL.Query().Get("pagecount")
+
+	users, err := model.GetUsers(sqlExec, offset, pagecount)
+	if err != nil {
+		render.JSON(w, r, http.StatusOK, render.M{
+			"code":    common.AccountDBError,
+			"message": err.Error(),
+		})
+		return
+	}
+
+	render.JSON(w, r, http.StatusOK, render.M{
+		"code": common.OK,
+		"body": render.M{
+			"total": count,
+			"users": users,
+		},
+	})
+}
+
 func CheckExistencHandler(w http.ResponseWriter, r *http.Request) {
 	phone := r.URL.Query().Get("phone")
 	email := r.URL.Query().Get("email")

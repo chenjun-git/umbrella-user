@@ -46,6 +46,7 @@ func registerRouter(version string, r chi.Router) {
 		//r.Put("/account_token", monitor.HttpHandlerWrapper("GetTokenHandler", GetTokenHandler))
 		r.Get("/get_phone", monitor.HttpHandlerWrapper("GetPhoneHandler", GetPhoneHandler))
 		r.Get("/get_user", monitor.HttpHandlerWrapper("GetUserHandler", GetUserHandler))
+		r.Get("/get_users", monitor.HttpHandlerWrapper("GetUsersHandler", GetUsersHandler))
 		r.Post("/change_password", monitor.HttpHandlerWrapper("ForceChangePasswordHandler", ForceChangePasswordHandler))
 		r.Post("/update_email", monitor.HttpHandlerWrapper("ForceUpdateEmailHandler", ForceUpdateEmailHandler))
 		r.Get("/check_existence", monitor.HttpHandlerWrapper("CheckExistencHandler", CheckExistencHandler))

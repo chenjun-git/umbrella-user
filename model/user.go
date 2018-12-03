@@ -1,8 +1,8 @@
 package model
 
 import (
-	"fmt"
 	"database/sql"
+	"fmt"
 	"strings"
 	"time"
 
@@ -14,24 +14,24 @@ import (
 const (
 	UserTableName = "user"
 
-	UserFieldID                 = "user_id"
-	UserFieldUserName           = "user_name"
-	UserFieldAlias              = "alias"
-	UserFieldUserPasswd         = "user_passwd"
-	UserFieldHashPasswd         = "hashed_passwd"
-	UserFieldPasswdLevel        = "passwd_level"
-	UserFieldLastUpdatePasswd   = "last_update_passwd"
-	UserFieldRegisterSource     = "register_source"
-	UserFieldPortTrait          = "portrait"
-	UserFieldTel                = "tel"
-	UserFieldEmail              = "email"
-	UserFieldQQ                 = "qq"
-	UserFieldIsMember           = "is_member"
-	UserFieldMemberStartTime    = "member_start_time"
-	UserFieldMemberDuration     = "member_duration"
-	UserFieldRole               = "role"
-	UserFieldCreateTime         = "create_time"
-	UserFieldUpdateTime         = "update_time"
+	UserFieldID               = "user_id"
+	UserFieldUserName         = "user_name"
+	UserFieldAlias            = "alias"
+	UserFieldUserPasswd       = "user_passwd"
+	UserFieldHashPasswd       = "hashed_passwd"
+	UserFieldPasswdLevel      = "passwd_level"
+	UserFieldLastUpdatePasswd = "last_update_passwd"
+	UserFieldRegisterSource   = "register_source"
+	UserFieldPortTrait        = "portrait"
+	UserFieldTel              = "tel"
+	UserFieldEmail            = "email"
+	UserFieldQQ               = "qq"
+	UserFieldIsMember         = "is_member"
+	UserFieldMemberStartTime  = "member_start_time"
+	UserFieldMemberDuration   = "member_duration"
+	UserFieldRole             = "role"
+	UserFieldCreateTime       = "create_time"
+	UserFieldUpdateTime       = "update_time"
 )
 
 type User struct {
@@ -128,21 +128,65 @@ func sqlUpdate(db db.MySQLExec, tableName string, updates, wheres map[string]int
 //////////////////////////////////////////////////////////////////////////////////
 
 func Count(mysqlExex db.MySQLExec, fieldValues map[string]interface{}) (int, error) {
-	_SQL := "select count(1) from user where %s"
-
-	args := make([]interface{}, 0, len(fieldValues))
-	conditions := make([]string, 0, len(fieldValues))
-	for key, value := range fieldValues {
-		conditions = append(conditions, fmt.Sprintf("%s = ?", key))
-		args = append(args, value)
+	_SQL := "select count(1) from user"
+	if len(fieldValues) != 0 {
+		_SQL += " where %s "
+		args := make([]interface{}, 0, len(fieldValues))
+		conditions := make([]string, 0, len(fieldValues))
+		for key, value := range fieldValues {
+			conditions = append(conditions, fmt.Sprintf("%s = ?", key))
+			args = append(args, value)
+		}
+		_SQL = fmt.Sprintf(_SQL, strings.Join(conditions, ","))
 	}
-	_SQL = fmt.Sprintf(_SQL, strings.Join(conditions, ","))
 
 	var total int
 	if err := mysqlExex.QueryRow(_SQL, args...).Scan(&total); err != nil {
 		return 0, err
 	}
 	return total, nil
+}
+
+func getUsers(mysqlExex db.MySQLExec, offset, pageCount int) ([]*User, error) {
+	_SQL := "select user_id,user_name, alias, user_passwd, hashed_passwd, passwd_level, last_update_passwd, register_source, portrait, tel, email, qq, is_member, member_start_time, member_duration, role from user offset ? limit ? "
+
+	rows, err := mysqlExex.Query(_SQL, offset, pageCount)
+	if err != nil {
+		return err
+	}
+	defer rows.Close()
+
+	var users []*User
+	for rows.Next() {
+		user := &User{}
+		err := rows.Scan(&user.ID,
+			&user.UserName,
+			&user.Alias,
+			&user.UserPasswd,
+			&user.HashPasswd,
+			&user.PasswdLevel,
+			&user.LastUpdatePasswd,
+			&user.RegisterSource,
+			&user.PortRait,
+			&user.Tel,
+			&user.Email,
+			&user.QQ,
+			&user.IsMember,
+			&user.MemberStartTime,
+			&user.MemberDuration,
+			&user.MemberDuration,
+		)
+		if err != nil {
+			return nil, err
+		}
+		users = append(users, user)
+	}
+
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+
+	return users, nil
 }
 
 func getUserBy(mysqlExex db.MySQLExec, filter string, args []interface{}) (*User, error) {
